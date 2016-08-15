@@ -27,7 +27,7 @@ public class ImageLoad{
 					Color c = new Color(img.getRGB(j,i));
 					int r = (int)(c.getRed()*0.299);
 					int b = (int)(c.getBlue()*0.114);
-					int g = (int)(c.getGreen()*0.587);
+					int g = c.getGreen();
 					
 					int shade = r+g+b;
 					Color nc = new Color(shade, shade, shade);
@@ -48,12 +48,6 @@ public class ImageLoad{
 	public static void main(String args[])throws IOException{
 		ImageLoad obj = new ImageLoad();
 		//System.out.println(args[0]+" "+args[1]);
-
-		if(args.length == 0){
-			System.out.println("Error!! Missing Arguments. Please provide filename");
-			System.exit(0);
-		}
-
 		obj.loadImage(args[0]);
 	}
 }

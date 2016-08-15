@@ -15,4 +15,3 @@ Syntax :
 	$ java RandomImage
 	
 3. XorImage.java : Takes two images as input (command line) (of same dimensions) and ouputs a image with special filter.
-

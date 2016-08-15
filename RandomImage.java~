@@ -32,7 +32,7 @@ public class RandomImage extends JPanel{
 		
 		for(i=0;i<height;i++){
 			for(j=0;j<width;j++){
-				Color newColor = new Color(255, 255, 255);
+				Color newColor = new Color(12, 56, 87);
 				img.setRGB(i,j,newColor.getRGB());
 			}
 		}

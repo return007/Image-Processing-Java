@@ -1,0 +1,50 @@
+import java.io.*;
+import java.awt.Image;
+import javax.imageio.*;
+import java.awt.image.BufferedImage;
+import java.awt.Color;
+
+public class XorImage{
+	private BufferedImage img1;
+	private BufferedImage img2;
+	
+	public void xorIt(String fn1, String fn2){
+		
+		try{
+		
+			img1 = ImageIO.read(new File(fn1));
+			img2 = ImageIO.read(new File(fn2));
+		
+			int i,j,height,width;
+			height = img1.getHeight();
+			width = img2.getWidth();
+		
+			for(i=0;i<height;i++){
+				for(j=0;j<width;j++){
+					Color c1 = new Color(img1.getRGB(j,i));
+					Color c2 = new Color(img2.getRGB(j,i));
+				
+					int r = c1.getRed() & c2.getRed();
+					int b = c1.getBlue() & c2.getBlue();
+					int g = c1.getGreen() & c2.getGreen();
+				
+					Color nc = new Color(r,g,b);
+					img1.setRGB(j,i,nc.getRGB());
+				}
+			}
+		
+			File fout = new File("xor.jpg");
+			ImageIO.write(img1,"jpg",fout);
+			
+		}
+		catch(Exception e){
+			System.out.println(e);
+			System.exit(0);
+		}
+	}
+	
+	public static void main(String args[]){
+		XorImage obj = new XorImage();
+		obj.xorIt(args[0],args[1]);
+	}
+}
